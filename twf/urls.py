@@ -19,6 +19,10 @@ from .import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.signin),
-    path('postsign/',views.postsign),
+    path('',views.homepage,name="home"),
+    path('signup/',views.signup_page,name="signup"),
+    path('enter-details/',views.postsignup_page,name="details"),
+    path('signin/',views.signin,name="signinpage"),
+    path('postlogin/',views.postlogin),
+    path('logout/',views.signout,name='signout')
 ]

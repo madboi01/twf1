@@ -7,8 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    THIS IS HOMEPAGE
-    <li><a href="{% url 'signinpage' %}">LOG IN</a></li>
-    <li class="new"><a href="{% url 'signup' %}">SIGN UP</a></li>
+    Enter details here!
+    <form class="logout-link" action="{% url 'signout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">LOGOUT</button>
+    </form> 
 </body>
 </html>

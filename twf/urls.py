@@ -24,7 +24,8 @@ urlpatterns = [
     path('postsignup/',views.postsignup_page,name="postsignup"),
     path('enter-details/',views.details_page,name="details"),
     path('signin/',views.signin,name="signinpage"),
-    path('postlogin/',views.postlogin,name="postlogin"),
+    path('postlogin/',views.postlogin),
     path('logout/',views.signout,name='signout'),
-    path('post_details/',views.post_details,name="post_details")
+    path('post_details/',views.post_details,name="post_details"),
+    path('details/',views.show_details,name="show_details")
 ]

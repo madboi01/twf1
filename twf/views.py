@@ -57,10 +57,11 @@ def postlogin(request):
     except:
         popup="Invalid Credentials!"
         return render(request,'signin.html',{"popup":popup})
+    print(user['localId'])
     session_id=user['idToken']
     request.session['uid']=str(session_id)
-    if databasee.child("users").child(user['localId']).child("details").shallow().get().val():
-        return render(request,'postlogin.html',{"e":email})
+    if databasee.child("users").child(user['localId']).child("details").shallow().get(user['idToken']).val():
+        return redirect('show_details')
     else:
         return redirect('details')
     
@@ -83,9 +84,19 @@ def post_details(request):
         user=user['users']
         user=user[0]
         user=user['localId']
-        data={"name":name,"Date of Birth":dob,"Favourite football club":ffc,"Favourite football player":ffp}
+        data={"name":name,"dob":dob,"ffc":ffc,"ffp":ffp}
         databasee.child("users").child(user).child("details").set(data,idtoken)
-        return render(request,'postlogin.html')
+        return redirect('show_details')
     except KeyError:
-        popup="Oops! User logged out. Please log in again!"
+        popup="Oops! User Logged out. Please log in again!"
         return render(request,'signin.html',{"popup":popup})
+    
+
+def show_details(request):
+    idtoken=request.session['uid']
+    user=authe.get_account_info(idtoken)
+    user=user['users']
+    user=user[0]
+    user=user['localId']
+    data=databasee.child("users").child(user).child("details").get(idtoken).val()
+    return render(request,'show_details.html',{'data':data})

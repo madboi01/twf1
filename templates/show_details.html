@@ -14,10 +14,16 @@
     </style>
 </head>
 <body>
-    WELCOME {{e}}!
+    <h2>Welcome! Your Details:</h2>
     <form class="logout-link" action="{% url 'signout' %}" method="post">
         {% csrf_token %}
         <button type="submit">LOGOUT</button>
     </form> 
+    
+    NAME:{{data.name}}<br><br>
+    DATE OF BIRTH:{{data.dob}}<br><br>
+    FAVOURITE FOOTBALL CLUB:{{data.ffc}}<br><br>
+    FAVOURITE FOOTBALL PLAYER:{{data.ffp}}   
+    
 </body>
 </html>

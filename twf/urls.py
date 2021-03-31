@@ -21,8 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.homepage,name="home"),
     path('signup/',views.signup_page,name="signup"),
-    path('enter-details/',views.postsignup_page,name="details"),
+    path('postsignup/',views.postsignup_page,name="postsignup"),
+    path('enter-details/',views.details_page,name="details"),
     path('signin/',views.signin,name="signinpage"),
-    path('postlogin/',views.postlogin),
-    path('logout/',views.signout,name='signout')
+    path('postlogin/',views.postlogin,name="postlogin"),
+    path('logout/',views.signout,name='signout'),
+    path('post_details/',views.post_details,name="post_details")
 ]

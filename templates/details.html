@@ -5,12 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        form.logout-link{
+            position: absolute;
+            right:10px;
+            top:5px;
+        }
+    </style>
 </head>
 <body>
-    Enter details here!
+    <h2>Enter details here!</h2>
     <form class="logout-link" action="{% url 'signout' %}" method="post">
         {% csrf_token %}
         <button type="submit">LOGOUT</button>
     </form> 
+    <form action="/post_details/" method="POST">
+        {% csrf_token %}
+        Name:
+        <input type="text" name="username" required><br><br>
+        Date of Birth:
+        <input type="date" name="dob" required><br><br>
+        Favourite football club:
+        <input type="text" name="ffc" required><br><br>
+        Favourite football player:
+        <input type="text" name="ffp" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
